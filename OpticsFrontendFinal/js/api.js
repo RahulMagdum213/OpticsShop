@@ -1,6 +1,6 @@
 // Spring Boot Base URL
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://opticsshop.onrender.com";
 
 // =========================================
 // REUSABLE TOAST NOTIFICATION
