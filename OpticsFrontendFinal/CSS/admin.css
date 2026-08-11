@@ -1,0 +1,351 @@
+/* ==========================
+   ADMIN LAYOUT
+========================== */
+
+.admin-container{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+aside{
+
+    width:260px;
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:25px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.admin-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:50px;
+
+}
+
+.admin-logo i{
+
+    font-size:35px;
+
+    color:#fbbf24;
+
+}
+
+.admin-logo h2{
+
+    font-size:26px;
+
+}
+
+aside ul{
+
+    list-style:none;
+
+}
+
+aside ul li{
+
+    padding:16px 18px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:17px;
+
+}
+
+aside ul li:hover{
+
+    background:#2563eb;
+
+}
+
+/* ==========================
+   MAIN
+========================== */
+
+main{
+
+    flex:1;
+
+    padding:40px;
+
+}
+
+main h1{
+
+    color:white;
+
+    margin-bottom:35px;
+
+}
+
+/* ==========================
+   DASHBOARD CARDS
+========================== */
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.dashboard-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.dashboard-card i{
+
+    font-size:55px;
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+}
+
+.dashboard-card h2{
+
+    color:#1e293b;
+
+    margin-bottom:15px;
+
+}
+
+.dashboard-card p{
+
+    color:#64748b;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+.admin-container{
+
+    flex-direction:column;
+
+}
+
+aside{
+
+    width:100%;
+
+}
+
+}
+
+/* ==========================
+   FORM CARD
+========================== */
+
+.form-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.form-card input,
+.form-card textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.form-card textarea{
+
+    resize:none;
+
+    height:100px;
+
+}
+
+.form-card button{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.form-card button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+table{
+
+    width:100%;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    border-collapse:collapse;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+thead{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+th,
+td{
+
+    padding:18px;
+
+    text-align:center;
+
+}
+
+tbody tr:nth-child(even){
+
+    background:#f8fafc;
+
+}
+
+.edit-btn{
+
+    background:#f59e0b;
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:8px;
+
+    margin-right:10px;
+
+}
+
+.delete-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:8px;
+
+}
+
+.form-card select{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    background:white;
+
+}
+
+tbody td{
+
+    color:#1e293b;
+
+}

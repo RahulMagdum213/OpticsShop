@@ -1,0 +1,436 @@
+/* ================= NAVBAR ================= */
+
+nav{
+
+    height:80px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo i{
+
+    font-size:32px;
+
+    color:#2563eb;
+
+}
+
+.logo h2{
+
+    color:#1e293b;
+
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+
+    width:420px;
+
+    position:relative;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:14px 50px 14px 20px;
+
+    border-radius:30px;
+
+    border:2px solid #dbeafe;
+
+    font-size:15px;
+
+}
+
+.search-box input:focus{
+
+    border-color:#2563eb;
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    right:20px;
+
+    top:16px;
+
+    color:#2563eb;
+
+}
+
+/* ================= RIGHT NAV ================= */
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.nav-right button{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.nav-right button:hover{
+
+    background:#1e40af;
+
+}
+
+.user-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#1e293b;
+
+    font-weight:600;
+
+}
+
+.user-info i{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#2563eb;
+
+    color:white;
+
+    border-radius:50%;
+
+}
+
+/* ================= MAIN ================= */
+
+.main-container{
+
+    display:flex;
+
+    min-height:calc(100vh - 80px);
+
+}
+
+/* ================= SIDEBAR ================= */
+
+aside{
+
+    width:250px;
+
+    background:white;
+
+    padding:30px;
+
+    box-shadow:4px 0 15px rgba(0,0,0,.05);
+
+}
+
+aside h3{
+
+    color:#1e293b;
+
+    margin-bottom:25px;
+
+}
+
+#categoryContainer{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+/* Category Button */
+
+.category{
+
+    background:#eff6ff;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.category:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* ================= PRODUCTS ================= */
+
+section{
+
+    flex:1;
+
+    padding:35px;
+
+}
+
+section h2{
+
+    color:white;
+
+    margin-bottom:25px;
+
+}
+
+#productContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+/* ================= PRODUCT CARD ================= */
+
+.product-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.product-body{
+
+    padding:20px;
+
+}
+
+.product-body h3{
+
+    color:#1e293b;
+
+    margin-bottom:8px;
+
+}
+
+.brand{
+
+    color:#64748b;
+
+    margin-bottom:12px;
+
+}
+
+.price{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+.stock{
+
+    color:green;
+
+    margin-bottom:10px;
+
+}
+
+.description{
+
+    color:#555;
+
+    font-size:14px;
+
+    line-height:22px;
+
+    margin-bottom:20px;
+
+}
+
+.product-body button{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+}
+
+.product-body button:hover{
+
+    background:#1e40af;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+    nav{
+
+        flex-direction:column;
+
+        height:auto;
+
+        padding:20px;
+
+        gap:20px;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+    .main-container{
+
+        flex-direction:column;
+
+    }
+
+    aside{
+
+        width:100%;
+
+    }
+
+}
+/* ================= PRODUCTS HEADER ================= */
+
+.products-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.products-header h2{
+
+    margin-bottom:0;
+
+}
+
+#sortPrice{
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    border:2px solid #dbeafe;
+
+    background:white;
+
+    color:#1e293b;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+}

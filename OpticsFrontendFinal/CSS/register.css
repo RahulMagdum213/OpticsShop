@@ -1,0 +1,219 @@
+.container{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* Left Panel */
+
+.left-panel{
+
+    width:55%;
+
+    padding:70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:60px;
+
+}
+
+.logo i{
+
+    font-size:42px;
+
+    color:#ffd54f;
+
+}
+
+.logo h1{
+
+    font-size:40px;
+
+}
+
+.welcome h2{
+
+    font-size:52px;
+
+    margin-bottom:20px;
+
+}
+
+.welcome p{
+
+    width:80%;
+
+    font-size:18px;
+
+    color:#dbeafe;
+
+    line-height:30px;
+
+}
+
+/* Right */
+
+.right-panel{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.register-card{
+
+    width:430px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    padding:35px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+.register-card h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:white;
+
+    border-radius:15px;
+
+    margin-bottom:18px;
+
+    padding:0 18px;
+
+}
+
+.input-box i{
+
+    color:#2563eb;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    font-size:16px;
+
+}
+
+.register-card button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#ffd54f;
+
+    border-radius:15px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.register-card button:hover{
+
+    background:white;
+
+}
+
+.login-link{
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+.login-link a{
+
+    color:#ffd54f;
+
+    font-weight:600;
+
+}
+
+@media(max-width:1000px){
+
+.left-panel{
+
+    display:none;
+
+}
+
+.right-panel{
+
+    width:100%;
+
+}
+
+.register-card{
+
+    width:90%;
+
+}
+
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 45px;
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2563eb;
+    cursor: pointer;
+    font-size: 15px;
+}

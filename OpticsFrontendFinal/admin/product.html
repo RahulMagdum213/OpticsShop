@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Management</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- Sidebar -->
+
+    <aside>
+
+        <div class="admin-logo">
+
+            <i class="fa-solid fa-glasses"></i>
+
+            <h2>Optics Shop</h2>
+
+        </div>
+
+        <ul>
+
+            <li id="dashboardBtn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </li>
+
+            <li id="categoryBtn">
+
+                <i class="fa-solid fa-folder"></i>
+
+                Categories
+
+            </li>
+
+            <li id="productBtn">
+
+                <i class="fa-solid fa-glasses"></i>
+
+                Products
+
+            </li>
+
+            <li id="customerBtn">
+
+                <i class="fa-solid fa-users"></i>
+
+                Customers
+
+            </li>
+
+            <li id="ordersBtn">
+
+                <i class="fa-solid fa-box"></i>
+
+                Orders
+
+            </li>
+
+            <li id="logoutBtn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Login
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main>
+
+        <h1>
+
+            Product Management
+
+        </h1>
+
+        <div class="form-card" id="productForm">
+
+            <input
+                    type="hidden"
+                    id="productId">
+
+            <input
+                    type="text"
+                    id="productName"
+                    placeholder="Product Name">
+
+            <input
+                    type="text"
+                    id="brand"
+                    placeholder="Brand">
+
+            <input
+                    type="number"
+                    id="price"
+                    placeholder="Price">
+
+            <input
+                    type="number"
+                    id="stock"
+                    placeholder="Stock">
+
+            <textarea
+                    id="description"
+                    placeholder="Description"></textarea>
+
+            <input
+                    type="text"
+                    id="imageUrl"
+                    placeholder="Image URL">
+
+            <select id="category">
+
+            </select>
+
+            <button id="saveBtn">
+
+                Save Product
+
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Product</th>
+
+                <th>Brand</th>
+
+                <th>Price</th>
+
+                <th>Stock</th>
+
+                <th>Category</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="productTable">
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+<script src="../js/api.js"></script>
+
+<script src="../js/admin.js"></script>
+
+<script src="../js/product.js"></script>
+
+</body>
+
+</html>

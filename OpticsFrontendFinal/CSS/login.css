@@ -1,0 +1,345 @@
+.container{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* Left Panel */
+
+.left-panel{
+
+    width:55%;
+
+    padding:70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:60px;
+
+}
+
+.logo i{
+
+    font-size:42px;
+
+    color:#ffd54f;
+
+}
+
+.logo h1{
+
+    font-size:40px;
+
+    font-weight:700;
+
+}
+
+.welcome h2{
+
+    font-size:55px;
+
+    line-height:70px;
+
+    margin-bottom:25px;
+
+}
+
+.welcome p{
+
+    width:80%;
+
+    color:#dbeafe;
+
+    line-height:32px;
+
+    font-size:18px;
+
+}
+
+/* Features */
+
+.features{
+
+    margin-top:60px;
+
+}
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:22px;
+
+    font-size:18px;
+
+}
+
+.feature i{
+
+    color:#4ade80;
+
+}
+
+/* Right Panel */
+
+.right-panel{
+
+    width:45%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+/* Admin Button */
+
+.admin-btn{
+
+    position:absolute;
+
+    top:35px;
+
+    right:35px;
+
+}
+
+.admin-btn a{
+
+    background:white;
+
+    color:#2563eb;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.admin-btn a:hover{
+
+    background:#ffd54f;
+
+    color:black;
+
+}
+
+/* Login Card */
+
+.login-card{
+
+    width:420px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:25px;
+
+    padding:45px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+}
+
+.login-card h2{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+    font-size:34px;
+
+}
+
+.login-card p{
+
+    text-align:center;
+
+    color:#dbeafe;
+
+    margin-bottom:35px;
+
+}
+
+/* Inputs */
+
+.input-box{
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+    border-radius:15px;
+
+    padding:0 18px;
+
+}
+
+.input-box i{
+
+    color:#2563eb;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:16px;
+
+    font-size:16px;
+
+}
+
+/* Button */
+
+.login-card button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#ffd54f;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.login-card button:hover{
+
+    background:white;
+
+}
+
+/* Register */
+
+.register{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+.register a{
+
+    color:#ffd54f;
+
+    font-weight:600;
+
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+.left-panel{
+
+    display:none;
+
+}
+
+.right-panel{
+
+    width:100%;
+
+}
+
+.login-card{
+
+    width:90%;
+
+}
+
+}
+
+.input-box{
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:15px 50px;
+
+}
+
+.icon-left{
+
+    position:absolute;
+
+    left:18px;
+
+    color:#2563eb;
+
+    font-size:20px;
+
+}
+
+.icon-right{
+
+    position:absolute;
+
+    right:18px;
+
+    color:#777;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+}
+
+.icon-right:hover{
+
+    color:#2563eb;
+
+}

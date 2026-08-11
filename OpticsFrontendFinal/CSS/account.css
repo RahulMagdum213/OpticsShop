@@ -1,0 +1,211 @@
+/* ================= ACCOUNT PAGE ================= */
+
+.account-container{
+
+    min-height:calc(100vh - 80px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:50px 20px;
+
+}
+
+.account-card{
+
+    width:100%;
+
+    max-width:850px;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+
+}
+
+.account-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.account-title > i{
+
+    font-size:55px;
+
+    color:#2563eb;
+
+}
+
+.account-title h1{
+
+    color:#1e293b;
+
+    margin-bottom:5px;
+
+}
+
+.account-title p{
+
+    color:#64748b;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.form-group label{
+
+    color:#1e293b;
+
+    font-weight:600;
+
+}
+
+.form-group input{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border:2px solid #dbeafe;
+
+    border-radius:10px;
+
+    color:#1e293b;
+
+    background:white;
+
+    font-size:14px;
+
+}
+
+.form-group input:focus{
+
+    border-color:#2563eb;
+
+}
+
+.password-wrapper{
+
+    position:relative;
+
+}
+
+.password-wrapper input{
+
+    padding-right:45px;
+
+}
+
+.password-wrapper i{
+
+    position:absolute;
+
+    right:15px;
+
+    top:14px;
+
+    color:#64748b;
+
+    cursor:pointer;
+
+}
+
+.form-group small{
+
+    color:#64748b;
+
+    font-size:11px;
+
+}
+
+.account-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.account-actions button{
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+}
+
+#cancelBtn{
+
+    background:#e2e8f0;
+
+    color:#1e293b;
+
+}
+
+#saveBtn{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+#saveBtn:hover{
+
+    background:#1e40af;
+
+}
+
+@media(max-width:700px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .account-card{
+
+        padding:25px;
+
+    }
+
+}
