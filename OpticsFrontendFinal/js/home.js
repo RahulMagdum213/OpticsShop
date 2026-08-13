@@ -21,11 +21,14 @@ let allCategories = [];
 const productContainer =
     document.getElementById("productContainer");
 
+
 const categoryContainer =
     document.getElementById("categoryContainer");
 
+
 const searchBox =
     document.getElementById("search");
+
 
 const customerName =
     document.getElementById("customerName");
@@ -38,17 +41,18 @@ const customerName =
 const loginBtn =
     document.getElementById("loginBtn");
 
+
 const cartBtn =
     document.getElementById("cartBtn");
+
 
 const ordersBtn =
     document.getElementById("ordersBtn");
 
+
 const accountBtn =
     document.getElementById("accountBtn");
 
-const adminBtn =
-    document.getElementById("adminBtn");
 
 const logoutBtn =
     document.getElementById("logoutBtn");
@@ -75,6 +79,7 @@ window.onload = function () {
 
 function loadCustomer() {
 
+
     const customer =
         JSON.parse(
             localStorage.getItem("customer")
@@ -87,21 +92,41 @@ function loadCustomer() {
 
     if (!customer) {
 
-        loginBtn.style.display = "block";
 
-        cartBtn.style.display = "none";
+        // Show Login
 
-        ordersBtn.style.display = "none";
+        loginBtn.style.display =
+            "block";
 
-        accountBtn.style.display = "none";
 
-        adminBtn.style.display = "block";
+        // Hide customer options
 
-        customerName.parentElement.style.display = "none";
+        cartBtn.style.display =
+            "none";
 
-        logoutBtn.style.display = "none";
+
+        ordersBtn.style.display =
+            "none";
+
+
+        accountBtn.style.display =
+            "none";
+
+
+        // Hide customer information
+
+        customerName.parentElement.style.display =
+            "none";
+
+
+        // Hide Logout
+
+        logoutBtn.style.display =
+            "none";
+
 
         return;
+
     }
 
 
@@ -109,20 +134,40 @@ function loadCustomer() {
     // LOGGED-IN CUSTOMER
     // ==========================
 
-    loginBtn.style.display = "none";
 
-    cartBtn.style.display = "block";
+    // Hide Login
 
-    ordersBtn.style.display = "block";
+    loginBtn.style.display =
+        "none";
 
-    accountBtn.style.display = "block";
 
-    adminBtn.style.display = "none";
+    // Show customer options
 
-    customerName.parentElement.style.display = "flex";
+    cartBtn.style.display =
+        "block";
 
-    logoutBtn.style.display = "block";
 
+    ordersBtn.style.display =
+        "block";
+
+
+    accountBtn.style.display =
+        "block";
+
+
+    // Show customer information
+
+    customerName.parentElement.style.display =
+        "flex";
+
+
+    // Show Logout
+
+    logoutBtn.style.display =
+        "block";
+
+
+    // Display customer name
 
     customerName.innerHTML =
         "Hi, " + customer.customerName;
@@ -136,13 +181,18 @@ function loadCustomer() {
 
 async function loadProducts() {
 
+
     try {
 
+
         const response =
-            await fetch(`${BASE_URL}/product/getAll`);
+            await fetch(
+                `${BASE_URL}/product/getAll`
+            );
 
 
         if (!response.ok) {
+
 
             throw new Error(
                 "Unable to fetch products."
@@ -155,7 +205,9 @@ async function loadProducts() {
             await response.json();
 
 
-        allProducts = products;
+        allProducts =
+            products;
+
 
         filteredProducts =
             [...products];
@@ -165,9 +217,12 @@ async function loadProducts() {
             filteredProducts
         );
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -193,7 +248,9 @@ async function loadProducts() {
 
 async function loadCategories() {
 
+
     try {
+
 
         const response =
             await fetch(
@@ -202,6 +259,7 @@ async function loadCategories() {
 
 
         if (!response.ok) {
+
 
             throw new Error(
                 "Unable to fetch categories."
@@ -214,14 +272,18 @@ async function loadCategories() {
             await response.json();
 
 
-        allCategories = categories;
+        allCategories =
+            categories;
 
 
         displayCategories();
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -236,7 +298,9 @@ async function loadCategories() {
 
 function displayProducts(products) {
 
+
     if (products.length === 0) {
+
 
         productContainer.innerHTML = `
 
@@ -248,93 +312,103 @@ function displayProducts(products) {
 
         `;
 
+
         return;
+
     }
 
 
     let cards = "";
 
 
-    products.forEach(product => {
-
-        let image =
-            product.imageUrl;
+    products.forEach(
+        product => {
 
 
-        if (
-            !image ||
-            image.trim() === ""
-        ) {
-
-            image =
-                "images/no-image.png";
-
-        }
+            let image =
+                product.imageUrl;
 
 
-        cards += `
+            if (
+                !image ||
+                image.trim() === ""
+            ) {
 
-        <div class="product-card">
+                image =
+                    "images/no-image.png";
 
-            <img
-                src="${image}"
-                alt="${product.productName}">
-
-
-            <div class="product-body">
-
-                <h3>
-
-                    ${product.productName}
-
-                </h3>
+            }
 
 
-                <p class="brand">
+            cards += `
 
-                    ${product.brand}
-
-                </p>
+            <div class="product-card">
 
 
-                <p class="price">
-
-                    ₹${product.price}
-
-                </p>
+                <img
+                    src="${image}"
+                    alt="${product.productName}">
 
 
-                <p class="stock">
-
-                    Stock : ${product.stock}
-
-                </p>
+                <div class="product-body">
 
 
-                <p class="description">
+                    <h3>
 
-                    ${product.description}
+                        ${product.productName}
 
-                </p>
+                    </h3>
 
 
-                <button
-                    onclick="addToCart(${product.productId})">
+                    <p class="brand">
 
-                    <i class="fa-solid fa-cart-shopping"></i>
+                        ${product.brand}
 
-                    Add To Cart
+                    </p>
 
-                </button>
+
+                    <p class="price">
+
+                        ₹${product.price}
+
+                    </p>
+
+
+                    <p class="stock">
+
+                        Stock : ${product.stock}
+
+                    </p>
+
+
+                    <p class="description">
+
+                        ${product.description}
+
+                    </p>
+
+
+                    <button
+                        onclick="addToCart(${product.productId})">
+
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Add To Cart
+
+
+                    </button>
+
+
+                </div>
 
 
             </div>
 
-        </div>
+            `;
 
-        `;
-
-    });
+        }
+    );
 
 
     productContainer.innerHTML =
@@ -348,6 +422,7 @@ function displayProducts(products) {
 // ==========================
 
 function displayCategories() {
+
 
     let html = `
 
@@ -364,6 +439,7 @@ function displayCategories() {
 
     allCategories.forEach(
         category => {
+
 
             html += `
 
@@ -393,7 +469,9 @@ function displayCategories() {
 
 function showAllProducts() {
 
+
     searchBox.value = "";
+
 
     loadProducts();
 
@@ -406,7 +484,9 @@ function showAllProducts() {
 
 async function filterCategory(categoryId) {
 
+
     try {
+
 
         const response =
             await fetch(
@@ -415,6 +495,7 @@ async function filterCategory(categoryId) {
 
 
         if (!response.ok) {
+
 
             throw new Error(
                 "Unable to filter products."
@@ -435,9 +516,12 @@ async function filterCategory(categoryId) {
             filteredProducts
         );
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -463,7 +547,10 @@ searchBox.addEventListener(
     "keyup",
     function () {
 
-        clearTimeout(searchTimer);
+
+        clearTimeout(
+            searchTimer
+        );
 
 
         const keyword =
@@ -474,9 +561,11 @@ searchBox.addEventListener(
             setTimeout(
                 function () {
 
+
                     searchProducts(
                         keyword
                     );
+
 
                 },
                 300
@@ -488,9 +577,12 @@ searchBox.addEventListener(
 
 async function searchProducts(keyword) {
 
+
     if (keyword === "") {
 
+
         loadProducts();
+
 
         return;
 
@@ -499,6 +591,7 @@ async function searchProducts(keyword) {
 
     try {
 
+
         const response =
             await fetch(
                 `${BASE_URL}/product/search?productName=${encodeURIComponent(keyword)}`
@@ -506,6 +599,7 @@ async function searchProducts(keyword) {
 
 
         if (!response.ok) {
+
 
             throw new Error(
                 "Unable to search products."
@@ -526,9 +620,12 @@ async function searchProducts(keyword) {
             filteredProducts
         );
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -549,9 +646,12 @@ async function searchProducts(keyword) {
 
 async function sortProducts(order) {
 
+
     if (!order) {
 
+
         loadProducts();
+
 
         return;
 
@@ -560,6 +660,7 @@ async function sortProducts(order) {
 
     try {
 
+
         const response =
             await fetch(
                 `${BASE_URL}/product/sort?sortBy=${order}`
@@ -567,6 +668,7 @@ async function sortProducts(order) {
 
 
         if (!response.ok) {
+
 
             throw new Error(
                 "Unable to sort products."
@@ -587,9 +689,12 @@ async function sortProducts(order) {
             filteredProducts
         );
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -610,13 +715,19 @@ async function sortProducts(order) {
 
 async function addToCart(productId) {
 
+
     const customer =
         JSON.parse(
             localStorage.getItem("customer")
         );
 
 
+    // ==========================
+    // GUEST
+    // ==========================
+
     if (!customer) {
+
 
         showToast(
             "Please login to add products to cart.",
@@ -627,8 +738,10 @@ async function addToCart(productId) {
         setTimeout(
             function () {
 
+
                 window.location.href =
                     "login.html";
+
 
             },
             800
@@ -642,12 +755,14 @@ async function addToCart(productId) {
 
     const cart = {
 
+
         customer: {
 
             customerId:
                 customer.customerId
 
         },
+
 
         product: {
 
@@ -656,12 +771,14 @@ async function addToCart(productId) {
 
         },
 
+
         quantity: 1
 
     };
 
 
     try {
+
 
         const response =
             await fetch(
@@ -678,13 +795,16 @@ async function addToCart(productId) {
                     },
 
                     body:
-                        JSON.stringify(cart)
+                        JSON.stringify(
+                            cart
+                        )
 
                 }
             );
 
 
         if (!response.ok) {
+
 
             const message =
                 await response.text();
@@ -706,9 +826,12 @@ async function addToCart(productId) {
             "success"
         );
 
+
     }
 
+
     catch (error) {
+
 
         console.error(error);
 
@@ -731,8 +854,10 @@ loginBtn.addEventListener(
     "click",
     function () {
 
+
         window.location.href =
             "login.html";
+
 
     }
 );
@@ -746,6 +871,7 @@ cartBtn.addEventListener(
     "click",
     function () {
 
+
         const customer =
             JSON.parse(
                 localStorage.getItem("customer")
@@ -754,8 +880,10 @@ cartBtn.addEventListener(
 
         if (!customer) {
 
+
             window.location.href =
                 "login.html";
+
 
             return;
 
@@ -764,6 +892,7 @@ cartBtn.addEventListener(
 
         window.location.href =
             "cart.html";
+
 
     }
 );
@@ -777,6 +906,7 @@ ordersBtn.addEventListener(
     "click",
     function () {
 
+
         const customer =
             JSON.parse(
                 localStorage.getItem("customer")
@@ -785,8 +915,10 @@ ordersBtn.addEventListener(
 
         if (!customer) {
 
+
             window.location.href =
                 "login.html";
+
 
             return;
 
@@ -795,6 +927,7 @@ ordersBtn.addEventListener(
 
         window.location.href =
             "orders.html";
+
 
     }
 );
@@ -808,6 +941,7 @@ accountBtn.addEventListener(
     "click",
     function () {
 
+
         const customer =
             JSON.parse(
                 localStorage.getItem("customer")
@@ -816,8 +950,10 @@ accountBtn.addEventListener(
 
         if (!customer) {
 
+
             window.location.href =
                 "login.html";
+
 
             return;
 
@@ -827,20 +963,6 @@ accountBtn.addEventListener(
         window.location.href =
             "account.html";
 
-    }
-);
-
-
-// ==========================
-// ADMIN LOGIN
-// ==========================
-
-adminBtn.addEventListener(
-    "click",
-    function () {
-
-        window.location.href =
-            "login.html?admin=true";
 
     }
 );
@@ -854,6 +976,7 @@ logoutBtn.addEventListener(
     "click",
     function () {
 
+
         const customer =
             JSON.parse(
                 localStorage.getItem("customer")
@@ -862,8 +985,10 @@ logoutBtn.addEventListener(
 
         if (!customer) {
 
+
             window.location.href =
                 "login.html";
+
 
             return;
 
@@ -876,6 +1001,7 @@ logoutBtn.addEventListener(
             )
         ) {
 
+
             localStorage.removeItem(
                 "customer"
             );
@@ -883,6 +1009,7 @@ logoutBtn.addEventListener(
 
             window.location.href =
                 "index.html";
+
 
         }
 
