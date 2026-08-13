@@ -1,300 +1,260 @@
-.container{
+/* ==========================
+   MAIN CONTAINER
+========================== */
 
-    display:flex;
+.container {
 
-    min-height:100vh;
+    display: flex;
 
-}
-
-/* Left Panel */
-
-.left-panel{
-
-    width:55%;
-
-    padding:70px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    position:relative;
+    min-height: 100vh;
 
 }
 
-.logo{
 
-    display:flex;
+/* ==========================
+   LEFT PANEL
+========================== */
 
-    align-items:center;
+.left-panel {
 
-    gap:15px;
+    width: 55%;
 
-    margin-bottom:60px;
+    padding: 70px;
 
-}
+    display: flex;
 
-.logo i{
+    flex-direction: column;
 
-    font-size:42px;
+    justify-content: center;
 
-    color:#ffd54f;
-
-}
-
-.logo h1{
-
-    font-size:40px;
-
-    font-weight:700;
+    position: relative;
 
 }
 
-.welcome h2{
 
-    font-size:55px;
+.logo {
 
-    line-height:70px;
+    display: flex;
 
-    margin-bottom:25px;
+    align-items: center;
 
-}
+    gap: 15px;
 
-.welcome p{
-
-    width:80%;
-
-    color:#dbeafe;
-
-    line-height:32px;
-
-    font-size:18px;
+    margin-bottom: 60px;
 
 }
 
-/* Features */
 
-.features{
+.logo i {
 
-    margin-top:60px;
+    font-size: 42px;
 
-}
-
-.feature{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:22px;
-
-    font-size:18px;
+    color: #ffd54f;
 
 }
 
-.feature i{
 
-    color:#4ade80;
+.logo h1 {
 
-}
+    font-size: 40px;
 
-/* Right Panel */
-
-.right-panel{
-
-    width:45%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    position:relative;
+    font-weight: 700;
 
 }
 
-/* Admin Button */
 
-.admin-btn{
+.welcome h2 {
 
-    position:absolute;
+    font-size: 55px;
 
-    top:35px;
+    line-height: 70px;
 
-    right:35px;
-
-}
-
-.admin-btn a{
-
-    background:white;
-
-    color:#2563eb;
-
-    padding:12px 22px;
-
-    border-radius:30px;
-
-    font-weight:600;
-
-    transition:.3s;
+    margin-bottom: 25px;
 
 }
 
-.admin-btn a:hover{
 
-    background:#ffd54f;
+.welcome p {
 
-    color:black;
+    width: 80%;
 
-}
+    color: #dbeafe;
 
-/* Login Card */
+    line-height: 32px;
 
-.login-card{
-
-    width:420px;
-
-    background:rgba(255,255,255,.12);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.2);
-
-    border-radius:25px;
-
-    padding:45px;
-
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    font-size: 18px;
 
 }
 
-.login-card h2{
 
-    text-align:center;
+/* ==========================
+   FEATURES
+========================== */
 
-    margin-bottom:10px;
+.features {
 
-    font-size:34px;
-
-}
-
-.login-card p{
-
-    text-align:center;
-
-    color:#dbeafe;
-
-    margin-bottom:35px;
+    margin-top: 60px;
 
 }
 
-/* Inputs */
 
-.input-box{
+.feature {
 
-    background:white;
+    display: flex;
 
-    display:flex;
+    align-items: center;
 
-    align-items:center;
+    gap: 15px;
 
-    margin-bottom:22px;
+    margin-bottom: 22px;
 
-    border-radius:15px;
-
-    padding:0 18px;
+    font-size: 18px;
 
 }
 
-.input-box i{
 
-    color:#2563eb;
+.feature i {
 
-}
-
-.input-box input{
-
-    width:100%;
-
-    padding:16px;
-
-    font-size:16px;
+    color: #4ade80;
 
 }
 
-/* Button */
 
-.login-card button{
+/* ==========================
+   RIGHT PANEL
+========================== */
 
-    width:100%;
+.right-panel {
 
-    padding:15px;
+    width: 45%;
 
-    background:#ffd54f;
+    display: flex;
 
-    border-radius:15px;
+    justify-content: center;
 
-    font-size:18px;
+    align-items: center;
 
-    font-weight:600;
-
-}
-
-.login-card button:hover{
-
-    background:white;
+    position: relative;
 
 }
 
-/* Register */
 
-.register{
+/* ==========================
+   ADMIN BUTTON
+========================== */
 
-    text-align:center;
+.admin-btn {
 
-    margin-top:25px;
+    position: absolute;
 
-}
+    top: 35px;
 
-.register a{
-
-    color:#ffd54f;
-
-    font-weight:600;
+    right: 35px;
 
 }
 
-/* Responsive */
 
-@media(max-width:1000px){
+.admin-btn button {
 
-.left-panel{
+    display: flex;
 
-    display:none;
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    padding: 10px 20px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
 
 }
 
-.right-panel{
 
-    width:100%;
+.admin-btn button i {
 
-}
-
-.login-card{
-
-    width:90%;
+    font-size: 15px;
 
 }
 
+
+.admin-btn button:hover {
+
+    background: white;
+
+    color: #2563eb;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
 }
 
-.input-box{
+
+/* ==========================
+   LOGIN CARD
+========================== */
+
+.login-card {
+
+    width: 420px;
+
+    background: rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .2);
+
+    border-radius: 25px;
+
+    padding: 45px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+
+}
+
+
+.login-card h2 {
+
+    text-align: center;
+
+    margin-bottom: 10px;
+
+    font-size: 34px;
+
+}
+
+
+.login-card p {
+
+    text-align: center;
+
+    color: #dbeafe;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* ==========================
+   CUSTOMER INPUTS
+========================== */
+
+.input-box {
 
     position: relative;
 
@@ -302,44 +262,424 @@
 
     align-items: center;
 
-}
+    background: white;
 
-.input-box input{
+    margin-bottom: 22px;
 
-    width:100%;
-
-    padding:15px 50px;
+    border-radius: 15px;
 
 }
 
-.icon-left{
 
-    position:absolute;
+.input-box input {
 
-    left:18px;
+    width: 100%;
 
-    color:#2563eb;
+    padding: 15px 50px;
 
-    font-size:20px;
+    font-size: 16px;
 
-}
+    border: none;
 
-.icon-right{
+    outline: none;
 
-    position:absolute;
-
-    right:18px;
-
-    color:#777;
-
-    cursor:pointer;
-
-    font-size:20px;
+    border-radius: 15px;
 
 }
 
-.icon-right:hover{
 
-    color:#2563eb;
+.icon-left {
+
+    position: absolute;
+
+    left: 18px;
+
+    color: #2563eb;
+
+    font-size: 20px;
+
+}
+
+
+.icon-right {
+
+    position: absolute;
+
+    right: 18px;
+
+    color: #777;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+}
+
+
+.icon-right:hover {
+
+    color: #2563eb;
+
+}
+
+
+/* ==========================
+   CUSTOMER LOGIN BUTTON
+========================== */
+
+.login-card button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #ffd54f;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+
+.login-card button:hover {
+
+    background: white;
+
+}
+
+
+/* ==========================
+   REGISTER
+========================== */
+
+.register {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+
+.register a {
+
+    color: #ffd54f;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================
+   ADMIN LOGIN MODAL
+========================== */
+
+.admin-modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.60);
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+
+}
+
+
+.admin-modal.show {
+
+    display: flex;
+
+}
+
+
+/* ==========================
+   ADMIN LOGIN CARD
+========================== */
+
+.admin-login-card {
+
+    width: 380px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    position: relative;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.30);
+
+    animation: adminPopup .25s ease;
+
+}
+
+
+@keyframes adminPopup {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.9);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* ==========================
+   CLOSE BUTTON
+========================== */
+
+.close-admin {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 18px;
+
+    width: auto !important;
+
+    padding: 5px !important;
+
+    background: transparent !important;
+
+    color: #64748b;
+
+    border: none;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+.close-admin:hover {
+
+    color: #ef4444;
+
+    background: transparent !important;
+
+}
+
+
+/* ==========================
+   ADMIN ICON
+========================== */
+
+.admin-icon {
+
+    font-size: 45px;
+
+    color: #2563eb;
+
+    margin-bottom: 15px;
+
+}
+
+
+.admin-login-card h2 {
+
+    color: #1e293b;
+
+    margin-bottom: 8px;
+
+}
+
+
+.admin-login-card p {
+
+    color: #64748b;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* ==========================
+   ADMIN INPUTS
+========================== */
+
+.admin-input-box {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    margin-bottom: 16px;
+
+}
+
+
+.admin-input-box > i:first-child {
+
+    position: absolute;
+
+    left: 16px;
+
+    color: #2563eb;
+
+}
+
+
+.admin-input-box input {
+
+    width: 100%;
+
+    padding: 14px 48px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 15px;
+
+    border-radius: 12px;
+
+}
+
+
+.admin-password-toggle {
+
+    position: absolute;
+
+    right: 16px;
+
+    color: #777;
+
+    cursor: pointer;
+
+}
+
+
+.admin-password-toggle:hover {
+
+    color: #2563eb;
+
+}
+
+
+/* ==========================
+   ADMIN LOGIN SUBMIT
+========================== */
+
+.admin-login-submit {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.admin-login-submit:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px) {
+
+    .left-panel {
+
+        display: none;
+
+    }
+
+    .right-panel {
+
+        width: 100%;
+
+    }
+
+    .login-card {
+
+        width: 90%;
+
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .admin-login-card {
+
+        width: 90%;
+
+        padding: 30px 25px;
+
+    }
+
+    .admin-btn {
+
+        top: 20px;
+
+        right: 20px;
+
+    }
 
 }

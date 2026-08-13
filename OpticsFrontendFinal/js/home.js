@@ -16,6 +16,7 @@ const customerName = document.getElementById("customerName");
 const cartBtn = document.getElementById("cartBtn");
 const ordersBtn = document.getElementById("ordersBtn");
 const accountBtn = document.getElementById("accountBtn");
+const adminBtn = document.getElementById("adminBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 
 // ==========================
@@ -40,9 +41,11 @@ function loadCustomer() {
 
     const customer = JSON.parse(localStorage.getItem("customer"));
 
+    // User is not logged in
+    // Still allow access to index.html
     if (!customer) {
 
-        window.location.href = "login.html";
+        customerName.innerHTML = "Welcome";
 
         return;
     }
@@ -225,7 +228,6 @@ function displayCategories() {
     let html = `
 
         <div class="category"
-
              onclick="showAllProducts()">
 
             All Products
@@ -239,7 +241,6 @@ function displayCategories() {
         html += `
 
         <div class="category"
-
              onclick="filterCategory(${category.categoryId})">
 
             ${category.categoryName}
@@ -267,7 +268,7 @@ function showAllProducts() {
 }
 
 // ==========================
-// FILTER BY CATEGORY - BACKEND API
+// FILTER BY CATEGORY
 // ==========================
 
 async function filterCategory(categoryId) {
@@ -302,7 +303,7 @@ async function filterCategory(categoryId) {
 }
 
 // ==========================
-// SEARCH PRODUCTS - BACKEND API
+// SEARCH PRODUCTS
 // ==========================
 
 let searchTimer;
@@ -362,7 +363,7 @@ async function searchProducts(keyword) {
 }
 
 // ==========================
-// PRICE SORT - BACKEND API
+// PRICE SORT
 // ==========================
 
 async function sortProducts(order) {
@@ -413,6 +414,14 @@ async function addToCart(productId) {
 
     const customer = JSON.parse(localStorage.getItem("customer"));
 
+    // User is not logged in
+    if (!customer) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
     const cart = {
 
         customer: {
@@ -457,7 +466,10 @@ async function addToCart(productId) {
 
         }
 
-        showToast("Product Added To Cart Successfully", "success");
+        showToast(
+            "Product Added To Cart Successfully",
+            "success"
+        );
 
     }
 
@@ -465,7 +477,10 @@ async function addToCart(productId) {
 
         console.error(error);
 
-        showToast("Unable to connect to server.", "error");
+        showToast(
+            "Unable to connect to server.",
+            "error"
+        );
 
     }
 
@@ -477,6 +492,15 @@ async function addToCart(productId) {
 
 cartBtn.addEventListener("click", function () {
 
+    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    if (!customer) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
     window.location.href = "cart.html";
 
 });
@@ -486,6 +510,15 @@ cartBtn.addEventListener("click", function () {
 // ==========================
 
 ordersBtn.addEventListener("click", function () {
+
+    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    if (!customer) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
 
     window.location.href = "orders.html";
 
@@ -497,7 +530,28 @@ ordersBtn.addEventListener("click", function () {
 
 accountBtn.addEventListener("click", function () {
 
+    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    if (!customer) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
     window.location.href = "account.html";
+
+});
+
+// ==========================
+// ADMIN
+// ==========================
+
+adminBtn.addEventListener("click", function () {
+
+    // Admin login is already available
+    // on the login page.
+    window.location.href = "login.html";
 
 });
 
@@ -507,11 +561,21 @@ accountBtn.addEventListener("click", function () {
 
 logoutBtn.addEventListener("click", function () {
 
+    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    // Nobody is logged in
+    if (!customer) {
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
     if (confirm("Do you want to logout?")) {
 
         localStorage.removeItem("customer");
 
-        window.location.href = "login.html";
+        window.location.href = "index.html";
 
     }
 

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Optics Shop | Login</title>
 
     <link rel="stylesheet" href="css/common.css">
@@ -11,15 +14,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
 <div class="container">
+
+    <!-- ==========================
+         LEFT PANEL
+    =========================== -->
 
     <div class="left-panel">
 
@@ -31,9 +40,13 @@
 
         </div>
 
+
         <div class="welcome">
 
-            <h2>See Better.<br>Shop Smarter.</h2>
+            <h2>
+                See Better.<br>
+                Shop Smarter.
+            </h2>
 
             <p>
                 Premium eyewear for every style.
@@ -42,6 +55,7 @@
             </p>
 
         </div>
+
 
         <div class="features">
 
@@ -53,6 +67,7 @@
 
             </div>
 
+
             <div class="feature">
 
                 <i class="fa-solid fa-check"></i>
@@ -60,6 +75,7 @@
                 <span>Fast & Secure Ordering</span>
 
             </div>
+
 
             <div class="feature">
 
@@ -73,19 +89,30 @@
 
     </div>
 
+
+    <!-- ==========================
+         RIGHT PANEL
+    =========================== -->
+
     <div class="right-panel">
+
+
+        <!-- ADMIN BUTTON -->
 
         <div class="admin-btn">
 
-            <a href="admin/dashboard.html">
+            <button type="button" id="adminLoginBtn">
 
                 <i class="fa-solid fa-user-shield"></i>
 
-                Admin Panel
+                Admin
 
-            </a>
+            </button>
 
         </div>
+
+
+        <!-- CUSTOMER LOGIN -->
 
         <div class="login-card">
 
@@ -93,11 +120,15 @@
 
             <p>Login to continue shopping.</p>
 
+
             <form id="loginForm">
+
+
+                <!-- EMAIL -->
 
                 <div class="input-box">
 
-                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-solid fa-envelope icon-left"></i>
 
                     <input
                             type="email"
@@ -107,20 +138,26 @@
 
                 </div>
 
+
+                <!-- PASSWORD -->
+
                 <div class="input-box">
 
-    <i class="fa-solid fa-lock icon-left"></i>
+                    <i class="fa-solid fa-lock icon-left"></i>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password">
+                    <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            required>
 
-    <i
-        class="fa-solid fa-eye icon-right"
-        id="togglePassword"></i>
+                    <i
+                            class="fa-solid fa-eye icon-right"
+                            id="togglePassword">
+                    </i>
 
-</div>
+                </div>
+
 
                 <button type="submit">
 
@@ -129,6 +166,7 @@
                 </button>
 
             </form>
+
 
             <div class="register">
 
@@ -148,8 +186,95 @@
 
 </div>
 
+
+<!-- ==========================
+     ADMIN LOGIN MODAL
+=========================== -->
+
+<div id="adminModal" class="admin-modal">
+
+
+    <div class="admin-login-card">
+
+
+        <!-- CLOSE -->
+
+        <button
+                type="button"
+                id="closeAdminModal"
+                class="close-admin">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <!-- ICON -->
+
+        <i class="fa-solid fa-user-shield admin-icon"></i>
+
+
+        <h2>Admin Login</h2>
+
+        <p>Login to access the admin panel.</p>
+
+
+        <form id="adminLoginForm">
+
+
+            <!-- USERNAME -->
+
+            <div class="admin-input-box">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                        type="text"
+                        id="adminUsername"
+                        placeholder="Username"
+                        required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="admin-input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Password"
+                        required>
+
+                <i
+                        class="fa-solid fa-eye admin-password-toggle"
+                        id="toggleAdminPassword">
+                </i>
+
+            </div>
+
+
+            <button
+                    type="submit"
+                    class="admin-login-submit">
+
+                Login 
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
 <script src="js/api.js"></script>
 <script src="js/login.js"></script>
 
 </body>
+
 </html>
