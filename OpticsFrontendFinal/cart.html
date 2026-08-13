@@ -31,9 +31,16 @@
 
 </head>
 
+
 <body>
 
+
+<!-- ==========================
+     NAVBAR
+========================== -->
+
 <nav>
+
 
     <div class="logo">
 
@@ -43,7 +50,11 @@
 
     </div>
 
+
     <div class="nav-right">
+
+
+        <!-- HOME -->
 
         <button id="homeBtn">
 
@@ -53,6 +64,9 @@
 
         </button>
 
+
+        <!-- ORDERS -->
+
         <button id="ordersBtn">
 
             <i class="fa-solid fa-box"></i>
@@ -60,6 +74,20 @@
             Orders
 
         </button>
+
+
+        <!-- ACCOUNT -->
+
+        <button id="accountBtn">
+
+            <i class="fa-solid fa-user-pen"></i>
+
+            Account
+
+        </button>
+
+
+        <!-- LOGOUT -->
 
         <button id="logoutBtn">
 
@@ -69,11 +97,19 @@
 
         </button>
 
+
     </div>
 
 </nav>
 
+
+
+<!-- ==========================
+     CART
+========================== -->
+
 <div class="cart-container">
+
 
     <h1>
 
@@ -81,13 +117,16 @@
 
     </h1>
 
+
     <div id="cartItems">
 
         <!-- Cart Cards -->
 
     </div>
 
+
     <div class="cart-summary">
+
 
         <h2>
 
@@ -96,19 +135,27 @@
 
         </h2>
 
+
         <button id="placeOrderBtn">
 
             Place Order
 
         </button>
 
+
     </div>
+
 
 </div>
 
+
+
 <script src="js/api.js"></script>
 
+<script src="js/utils.js"></script>
+
 <script src="js/cart.js"></script>
+
 
 </body>
 

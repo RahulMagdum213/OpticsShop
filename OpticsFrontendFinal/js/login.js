@@ -1,256 +1,488 @@
-const loginForm = document.getElementById("loginForm");
+// =========================================
+// CUSTOMER LOGIN
+// =========================================
 
-loginForm.addEventListener("submit", loginCustomer);
+const loginForm =
+    document.getElementById("loginForm");
 
-async function loginCustomer(e){
+
+loginForm.addEventListener(
+    "submit",
+    loginCustomer
+);
+
+
+async function loginCustomer(e) {
 
     e.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
 
-    const password = document.getElementById("password").value.trim();
+    const email =
+        document.getElementById("email")
+            .value.trim();
 
-    if(email==="" || password===""){
 
-        showToast("Please fill all fields.", "warning");
+    const password =
+        document.getElementById("password")
+            .value.trim();
+
+
+    if (
+        email === "" ||
+        password === ""
+    ) {
+
+        showToast(
+            "Please fill all fields.",
+            "warning"
+        );
+
 
         return;
+
     }
 
-    const customer={
 
-        email:email,
+    const customer = {
 
-        password:password
+        email: email,
+
+        password: password
 
     };
 
-    try{
 
-        const response = await fetch(`${BASE_URL}/customer/login`,{
+    try {
 
-            method:"POST",
+        const response =
+            await fetch(
+                `${BASE_URL}/customer/login`,
+                {
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+                    method: "POST",
 
-            body:JSON.stringify(customer)
+                    headers: {
 
-        });
+                        "Content-Type":
+                            "application/json"
 
-        if(!response.ok){
+                    },
 
-            const message = await response.text();
+                    body:
+                        JSON.stringify(
+                            customer
+                        )
 
-            showToast(message, "error");
+                }
+            );
+
+
+        if (!response.ok) {
+
+            const message =
+                await response.text();
+
+
+            showToast(
+                message,
+                "error"
+            );
+
 
             return;
+
         }
 
-        const data = await response.json();
 
-        localStorage.setItem("customer",JSON.stringify(data));
+        const data =
+            await response.json();
 
-        showToast("Login Successful", "success");
 
-        window.location.href="index.html";
+        localStorage.setItem(
+            "customer",
+            JSON.stringify(data)
+        );
+
+
+        showToast(
+            "Login Successful",
+            "success"
+        );
+
+
+        window.location.href =
+            "index.html";
 
     }
-    catch(error){
+
+    catch (error) {
 
         console.error(error);
 
-        showToast("Unable to connect to server.", "error");
+
+        showToast(
+            "Unable to connect to server.",
+            "error"
+        );
 
     }
 
 }
 
-const password = document.getElementById("password");
 
-const togglePassword = document.getElementById("togglePassword");
+// =========================================
+// CUSTOMER PASSWORD EYE
+// =========================================
 
-togglePassword.addEventListener("click", function(){
+const password =
+    document.getElementById("password");
 
-    if(password.type === "password"){
 
-        password.type = "text";
+const togglePassword =
+    document.getElementById(
+        "togglePassword"
+    );
 
-        togglePassword.classList.remove("fa-eye");
 
-        togglePassword.classList.add("fa-eye-slash");
+togglePassword.addEventListener(
+    "click",
+    function () {
+
+        if (
+            password.type ===
+            "password"
+        ) {
+
+            password.type =
+                "text";
+
+
+            togglePassword.classList.remove(
+                "fa-eye"
+            );
+
+
+            togglePassword.classList.add(
+                "fa-eye-slash"
+            );
+
+        }
+        else {
+
+            password.type =
+                "password";
+
+
+            togglePassword.classList.remove(
+                "fa-eye-slash"
+            );
+
+
+            togglePassword.classList.add(
+                "fa-eye"
+            );
+
+        }
 
     }
-    else{
-
-        password.type = "password";
-
-        togglePassword.classList.remove("fa-eye-slash");
-
-        togglePassword.classList.add("fa-eye");
-
-    }
-
-});
+);
 
 
-// ==========================
+// =========================================
 // ADMIN LOGIN
-// ==========================
+// =========================================
 
-const adminLoginBtn = document.getElementById("adminLoginBtn");
+const adminLoginBtn =
+    document.getElementById(
+        "adminLoginBtn"
+    );
 
-const adminModal = document.getElementById("adminModal");
 
-const closeAdminModal = document.getElementById("closeAdminModal");
+const adminModal =
+    document.getElementById(
+        "adminModal"
+    );
 
-const adminLoginForm = document.getElementById("adminLoginForm");
 
-const adminPassword = document.getElementById("adminPassword");
+const closeAdminModal =
+    document.getElementById(
+        "closeAdminModal"
+    );
+
+
+const adminLoginForm =
+    document.getElementById(
+        "adminLoginForm"
+    );
+
+
+const adminPassword =
+    document.getElementById(
+        "adminPassword"
+    );
+
 
 const toggleAdminPassword =
-    document.getElementById("toggleAdminPassword");
+    document.getElementById(
+        "toggleAdminPassword"
+    );
 
 
-// Open Admin Login
+// =========================================
+// OPEN ADMIN LOGIN
+// =========================================
 
-adminLoginBtn.addEventListener("click", function(){
+adminLoginBtn.addEventListener(
+    "click",
+    function () {
 
-    adminModal.classList.add("show");
-
-});
-
-
-// Close Admin Login
-
-closeAdminModal.addEventListener("click", function(){
-
-    adminModal.classList.remove("show");
-
-});
-
-
-// Close when clicking outside modal
-
-adminModal.addEventListener("click", function(e){
-
-    if(e.target === adminModal){
-
-        adminModal.classList.remove("show");
+        adminModal.classList.add(
+            "show"
+        );
 
     }
-
-});
-
-
-// Admin Password Eye
-
-toggleAdminPassword.addEventListener("click", function(){
-
-    if(adminPassword.type === "password"){
-
-        adminPassword.type = "text";
-
-        toggleAdminPassword.classList.remove("fa-eye");
-
-        toggleAdminPassword.classList.add("fa-eye-slash");
-
-    }
-    else{
-
-        adminPassword.type = "password";
-
-        toggleAdminPassword.classList.remove("fa-eye-slash");
-
-        toggleAdminPassword.classList.add("fa-eye");
-
-    }
-
-});
+);
 
 
-// Admin Login
+// =========================================
+// OPEN ADMIN LOGIN FROM URL
+// =========================================
 
-adminLoginForm.addEventListener("submit", async function(e){
-
-    e.preventDefault();
-
-    const username =
-        document.getElementById("adminUsername").value.trim();
-
-    const password =
-        document.getElementById("adminPassword").value.trim();
+const adminParams =
+    new URLSearchParams(
+        window.location.search
+    );
 
 
-    if(username === "" || password === ""){
+if (
+    adminParams.get("admin") ===
+    "true"
+) {
 
-        showToast("Please enter username and password.", "warning");
+    adminModal.classList.add(
+        "show"
+    );
 
-        return;
+}
+
+
+// =========================================
+// CLOSE ADMIN LOGIN
+// =========================================
+
+closeAdminModal.addEventListener(
+    "click",
+    function () {
+
+        adminModal.classList.remove(
+            "show"
+        );
 
     }
+);
 
 
-    try{
+// =========================================
+// CLOSE OUTSIDE MODAL
+// =========================================
 
-        const response = await fetch(`${BASE_URL}/admin/login`, {
+adminModal.addEventListener(
+    "click",
+    function (e) {
 
-            method: "POST",
+        if (
+            e.target ===
+            adminModal
+        ) {
 
-            headers: {
+            adminModal.classList.remove(
+                "show"
+            );
 
-                "Content-Type": "application/json"
+        }
 
-            },
-
-            body: JSON.stringify({
-
-                username: username,
-
-                password: password
-
-            })
-
-        });
+    }
+);
 
 
-        if(!response.ok){
+// =========================================
+// ADMIN PASSWORD EYE
+// =========================================
 
-            showToast("Admin login failed.", "error");
+toggleAdminPassword.addEventListener(
+    "click",
+    function () {
+
+        if (
+            adminPassword.type ===
+            "password"
+        ) {
+
+            adminPassword.type =
+                "text";
+
+
+            toggleAdminPassword.classList.remove(
+                "fa-eye"
+            );
+
+
+            toggleAdminPassword.classList.add(
+                "fa-eye-slash"
+            );
+
+        }
+        else {
+
+            adminPassword.type =
+                "password";
+
+
+            toggleAdminPassword.classList.remove(
+                "fa-eye-slash"
+            );
+
+
+            toggleAdminPassword.classList.add(
+                "fa-eye"
+            );
+
+        }
+
+    }
+);
+
+
+// =========================================
+// ADMIN LOGIN
+// =========================================
+
+adminLoginForm.addEventListener(
+    "submit",
+    async function (e) {
+
+        e.preventDefault();
+
+
+        const username =
+            document.getElementById(
+                "adminUsername"
+            )
+            .value.trim();
+
+
+        const password =
+            document.getElementById(
+                "adminPassword"
+            )
+            .value.trim();
+
+
+        if (
+            username === "" ||
+            password === ""
+        ) {
+
+            showToast(
+                "Please enter username and password.",
+                "warning"
+            );
+
 
             return;
 
         }
 
 
-        const success = await response.json();
+        try {
+
+            const response =
+                await fetch(
+                    `${BASE_URL}/admin/login`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                username:
+                                    username,
+
+                                password:
+                                    password
+
+                            })
+
+                    }
+                );
 
 
-        if(success){
+            if (!response.ok) {
 
-            showToast("Admin Login Successful", "success");
+                showToast(
+                    "Admin login failed.",
+                    "error"
+                );
 
-            setTimeout(function(){
 
-                window.location.href = "admin/dashboard.html";
+                return;
 
-            }, 800);
+            }
+
+
+            const success =
+                await response.json();
+
+
+            if (success) {
+
+                showToast(
+                    "Admin Login Successful",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "admin/dashboard.html";
+
+                    },
+                    800
+                );
+
+            }
+            else {
+
+                showToast(
+                    "Invalid admin username or password.",
+                    "error"
+                );
+
+            }
 
         }
-        else{
 
-            showToast("Invalid admin username or password.", "error");
+        catch (error) {
+
+            console.error(error);
+
+
+            showToast(
+                "Unable to connect to server.",
+                "error"
+            );
 
         }
 
     }
-    catch(error){
-
-        console.error(error);
-
-        showToast("Unable to connect to server.", "error");
-
-    }
-
-});
+);

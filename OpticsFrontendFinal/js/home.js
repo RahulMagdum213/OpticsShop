@@ -2,22 +2,57 @@
 // HOME PAGE JAVASCRIPT
 // =========================================
 
+
+// ==========================
+// GLOBAL VARIABLES
+// ==========================
+
 let allProducts = [];
+
 let filteredProducts = [];
+
 let allCategories = [];
 
-const productContainer = document.getElementById("productContainer");
-const categoryContainer = document.getElementById("categoryContainer");
 
-const searchBox = document.getElementById("search");
+// ==========================
+// HTML ELEMENTS
+// ==========================
 
-const customerName = document.getElementById("customerName");
+const productContainer =
+    document.getElementById("productContainer");
 
-const cartBtn = document.getElementById("cartBtn");
-const ordersBtn = document.getElementById("ordersBtn");
-const accountBtn = document.getElementById("accountBtn");
-const adminBtn = document.getElementById("adminBtn");
-const logoutBtn = document.getElementById("logoutBtn");
+const categoryContainer =
+    document.getElementById("categoryContainer");
+
+const searchBox =
+    document.getElementById("search");
+
+const customerName =
+    document.getElementById("customerName");
+
+
+// ==========================
+// NAVBAR BUTTONS
+// ==========================
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const cartBtn =
+    document.getElementById("cartBtn");
+
+const ordersBtn =
+    document.getElementById("ordersBtn");
+
+const accountBtn =
+    document.getElementById("accountBtn");
+
+const adminBtn =
+    document.getElementById("adminBtn");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
 
 // ==========================
 // INITIALIZE PAGE
@@ -33,26 +68,67 @@ window.onload = function () {
 
 };
 
+
 // ==========================
 // LOAD CUSTOMER
 // ==========================
 
 function loadCustomer() {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+    const customer =
+        JSON.parse(
+            localStorage.getItem("customer")
+        );
 
-    // User is not logged in
-    // Still allow access to index.html
+
+    // ==========================
+    // GUEST USER
+    // ==========================
+
     if (!customer) {
 
-        customerName.innerHTML = "Welcome";
+        loginBtn.style.display = "block";
+
+        cartBtn.style.display = "none";
+
+        ordersBtn.style.display = "none";
+
+        accountBtn.style.display = "none";
+
+        adminBtn.style.display = "block";
+
+        customerName.parentElement.style.display = "none";
+
+        logoutBtn.style.display = "none";
 
         return;
     }
 
-    customerName.innerHTML = "Hi, " + customer.customerName;
+
+    // ==========================
+    // LOGGED-IN CUSTOMER
+    // ==========================
+
+    loginBtn.style.display = "none";
+
+    cartBtn.style.display = "block";
+
+    ordersBtn.style.display = "block";
+
+    accountBtn.style.display = "block";
+
+    adminBtn.style.display = "none";
+
+    customerName.parentElement.style.display = "flex";
+
+    logoutBtn.style.display = "block";
+
+
+    customerName.innerHTML =
+        "Hi, " + customer.customerName;
 
 }
+
 
 // ==========================
 // LOAD ALL PRODUCTS
@@ -62,27 +138,39 @@ async function loadProducts() {
 
     try {
 
-        const response = await fetch(`${BASE_URL}/product/getAll`);
+        const response =
+            await fetch(`${BASE_URL}/product/getAll`);
+
 
         if (!response.ok) {
 
-            throw new Error("Unable to fetch products.");
+            throw new Error(
+                "Unable to fetch products."
+            );
 
         }
 
-        const products = await response.json();
+
+        const products =
+            await response.json();
+
 
         allProducts = products;
 
-        filteredProducts = [...products];
+        filteredProducts =
+            [...products];
 
-        displayProducts(filteredProducts);
+
+        displayProducts(
+            filteredProducts
+        );
 
     }
 
     catch (error) {
 
         console.error(error);
+
 
         productContainer.innerHTML = `
 
@@ -98,6 +186,7 @@ async function loadProducts() {
 
 }
 
+
 // ==========================
 // LOAD ALL CATEGORIES
 // ==========================
@@ -106,17 +195,27 @@ async function loadCategories() {
 
     try {
 
-        const response = await fetch(`${BASE_URL}/category/getAll`);
+        const response =
+            await fetch(
+                `${BASE_URL}/category/getAll`
+            );
+
 
         if (!response.ok) {
 
-            throw new Error("Unable to fetch categories.");
+            throw new Error(
+                "Unable to fetch categories."
+            );
 
         }
 
-        const categories = await response.json();
+
+        const categories =
+            await response.json();
+
 
         allCategories = categories;
+
 
         displayCategories();
 
@@ -129,6 +228,7 @@ async function loadCategories() {
     }
 
 }
+
 
 // ==========================
 // DISPLAY PRODUCTS
@@ -149,31 +249,46 @@ function displayProducts(products) {
         `;
 
         return;
-
     }
+
 
     let cards = "";
 
+
     products.forEach(product => {
 
-        let image = product.imageUrl;
+        let image =
+            product.imageUrl;
 
-        if (!image || image.trim() === "") {
 
-            image = "images/no-image.png";
+        if (
+            !image ||
+            image.trim() === ""
+        ) {
+
+            image =
+                "images/no-image.png";
 
         }
+
 
         cards += `
 
         <div class="product-card">
 
-            <img src="${image}"
-                 alt="${product.productName}">
+            <img
+                src="${image}"
+                alt="${product.productName}">
+
 
             <div class="product-body">
 
-                <h3>${product.productName}</h3>
+                <h3>
+
+                    ${product.productName}
+
+                </h3>
+
 
                 <p class="brand">
 
@@ -181,11 +296,13 @@ function displayProducts(products) {
 
                 </p>
 
+
                 <p class="price">
 
                     ₹${product.price}
 
                 </p>
+
 
                 <p class="stock">
 
@@ -193,19 +310,23 @@ function displayProducts(products) {
 
                 </p>
 
+
                 <p class="description">
 
                     ${product.description}
 
                 </p>
 
-                <button onclick="addToCart(${product.productId})">
+
+                <button
+                    onclick="addToCart(${product.productId})">
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
                     Add To Cart
 
                 </button>
+
 
             </div>
 
@@ -215,9 +336,12 @@ function displayProducts(products) {
 
     });
 
-    productContainer.innerHTML = cards;
+
+    productContainer.innerHTML =
+        cards;
 
 }
+
 
 // ==========================
 // DISPLAY CATEGORIES
@@ -227,8 +351,9 @@ function displayCategories() {
 
     let html = `
 
-        <div class="category"
-             onclick="showAllProducts()">
+        <div
+            class="category"
+            onclick="showAllProducts()">
 
             All Products
 
@@ -236,24 +361,31 @@ function displayCategories() {
 
     `;
 
-    allCategories.forEach(category => {
 
-        html += `
+    allCategories.forEach(
+        category => {
 
-        <div class="category"
-             onclick="filterCategory(${category.categoryId})">
+            html += `
 
-            ${category.categoryName}
+            <div
+                class="category"
+                onclick="filterCategory(${category.categoryId})">
 
-        </div>
+                ${category.categoryName}
 
-        `;
+            </div>
 
-    });
+            `;
 
-    categoryContainer.innerHTML = html;
+        }
+    );
+
+
+    categoryContainer.innerHTML =
+        html;
 
 }
+
 
 // ==========================
 // SHOW ALL PRODUCTS
@@ -267,6 +399,7 @@ function showAllProducts() {
 
 }
 
+
 // ==========================
 // FILTER BY CATEGORY
 // ==========================
@@ -276,19 +409,31 @@ async function filterCategory(categoryId) {
     try {
 
         const response =
-            await fetch(`${BASE_URL}/product/category/${categoryId}`);
+            await fetch(
+                `${BASE_URL}/product/category/${categoryId}`
+            );
+
 
         if (!response.ok) {
 
-            throw new Error("Unable to filter products.");
+            throw new Error(
+                "Unable to filter products."
+            );
 
         }
 
-        const products = await response.json();
 
-        filteredProducts = products;
+        const products =
+            await response.json();
 
-        displayProducts(filteredProducts);
+
+        filteredProducts =
+            products;
+
+
+        displayProducts(
+            filteredProducts
+        );
 
     }
 
@@ -296,11 +441,16 @@ async function filterCategory(categoryId) {
 
         console.error(error);
 
-        showToast("Unable to load category products.", "error");
+
+        showToast(
+            "Unable to load category products.",
+            "error"
+        );
 
     }
 
 }
+
 
 // ==========================
 // SEARCH PRODUCTS
@@ -308,19 +458,33 @@ async function filterCategory(categoryId) {
 
 let searchTimer;
 
-searchBox.addEventListener("keyup", function () {
 
-    clearTimeout(searchTimer);
+searchBox.addEventListener(
+    "keyup",
+    function () {
 
-    const keyword = searchBox.value.trim();
+        clearTimeout(searchTimer);
 
-    searchTimer = setTimeout(function () {
 
-        searchProducts(keyword);
+        const keyword =
+            searchBox.value.trim();
 
-    }, 300);
 
-});
+        searchTimer =
+            setTimeout(
+                function () {
+
+                    searchProducts(
+                        keyword
+                    );
+
+                },
+                300
+            );
+
+    }
+);
+
 
 async function searchProducts(keyword) {
 
@@ -332,23 +496,35 @@ async function searchProducts(keyword) {
 
     }
 
+
     try {
 
-        const response = await fetch(
-            `${BASE_URL}/product/search?productName=${encodeURIComponent(keyword)}`
-        );
+        const response =
+            await fetch(
+                `${BASE_URL}/product/search?productName=${encodeURIComponent(keyword)}`
+            );
+
 
         if (!response.ok) {
 
-            throw new Error("Unable to search products.");
+            throw new Error(
+                "Unable to search products."
+            );
 
         }
 
-        const products = await response.json();
 
-        filteredProducts = products;
+        const products =
+            await response.json();
 
-        displayProducts(filteredProducts);
+
+        filteredProducts =
+            products;
+
+
+        displayProducts(
+            filteredProducts
+        );
 
     }
 
@@ -356,11 +532,16 @@ async function searchProducts(keyword) {
 
         console.error(error);
 
-        showToast("Unable to search products.", "error");
+
+        showToast(
+            "Unable to search products.",
+            "error"
+        );
 
     }
 
 }
+
 
 // ==========================
 // PRICE SORT
@@ -376,23 +557,35 @@ async function sortProducts(order) {
 
     }
 
+
     try {
 
-        const response = await fetch(
-            `${BASE_URL}/product/sort?sortBy=${order}`
-        );
+        const response =
+            await fetch(
+                `${BASE_URL}/product/sort?sortBy=${order}`
+            );
+
 
         if (!response.ok) {
 
-            throw new Error("Unable to sort products.");
+            throw new Error(
+                "Unable to sort products."
+            );
 
         }
 
-        const products = await response.json();
 
-        filteredProducts = products;
+        const products =
+            await response.json();
 
-        displayProducts(filteredProducts);
+
+        filteredProducts =
+            products;
+
+
+        displayProducts(
+            filteredProducts
+        );
 
     }
 
@@ -400,11 +593,16 @@ async function sortProducts(order) {
 
         console.error(error);
 
-        showToast("Unable to sort products.", "error");
+
+        showToast(
+            "Unable to sort products.",
+            "error"
+        );
 
     }
 
 }
+
 
 // ==========================
 // ADD PRODUCT TO CART
@@ -412,27 +610,49 @@ async function sortProducts(order) {
 
 async function addToCart(productId) {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+    const customer =
+        JSON.parse(
+            localStorage.getItem("customer")
+        );
 
-    // User is not logged in
+
     if (!customer) {
 
-        window.location.href = "login.html";
+        showToast(
+            "Please login to add products to cart.",
+            "warning"
+        );
+
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "login.html";
+
+            },
+            800
+        );
+
 
         return;
+
     }
+
 
     const cart = {
 
         customer: {
 
-            customerId: customer.customerId
+            customerId:
+                customer.customerId
 
         },
 
         product: {
 
-            productId: productId
+            productId:
+                productId
 
         },
 
@@ -440,31 +660,46 @@ async function addToCart(productId) {
 
     };
 
+
     try {
 
-        const response = await fetch(`${BASE_URL}/cart/add`, {
+        const response =
+            await fetch(
+                `${BASE_URL}/cart/add`,
+                {
 
-            method: "POST",
+                    method: "POST",
 
-            headers: {
+                    headers: {
 
-                "Content-Type": "application/json"
+                        "Content-Type":
+                            "application/json"
 
-            },
+                    },
 
-            body: JSON.stringify(cart)
+                    body:
+                        JSON.stringify(cart)
 
-        });
+                }
+            );
+
 
         if (!response.ok) {
 
-            const message = await response.text();
+            const message =
+                await response.text();
 
-            showToast(message, "error");
+
+            showToast(
+                message,
+                "error"
+            );
+
 
             return;
 
         }
+
 
         showToast(
             "Product Added To Cart Successfully",
@@ -477,6 +712,7 @@ async function addToCart(productId) {
 
         console.error(error);
 
+
         showToast(
             "Unable to connect to server.",
             "error"
@@ -486,97 +722,169 @@ async function addToCart(productId) {
 
 }
 
+
+// ==========================
+// LOGIN PAGE
+// ==========================
+
+loginBtn.addEventListener(
+    "click",
+    function () {
+
+        window.location.href =
+            "login.html";
+
+    }
+);
+
+
 // ==========================
 // CART PAGE
 // ==========================
 
-cartBtn.addEventListener("click", function () {
+cartBtn.addEventListener(
+    "click",
+    function () {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
 
-    if (!customer) {
 
-        window.location.href = "login.html";
+        if (!customer) {
 
-        return;
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "cart.html";
+
     }
+);
 
-    window.location.href = "cart.html";
-
-});
 
 // ==========================
 // ORDERS PAGE
 // ==========================
 
-ordersBtn.addEventListener("click", function () {
+ordersBtn.addEventListener(
+    "click",
+    function () {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
 
-    if (!customer) {
 
-        window.location.href = "login.html";
+        if (!customer) {
 
-        return;
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "orders.html";
+
     }
+);
 
-    window.location.href = "orders.html";
-
-});
 
 // ==========================
 // ACCOUNT PAGE
 // ==========================
 
-accountBtn.addEventListener("click", function () {
+accountBtn.addEventListener(
+    "click",
+    function () {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
 
-    if (!customer) {
 
-        window.location.href = "login.html";
+        if (!customer) {
 
-        return;
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "account.html";
+
     }
+);
 
-    window.location.href = "account.html";
-
-});
 
 // ==========================
-// ADMIN
+// ADMIN LOGIN
 // ==========================
 
-adminBtn.addEventListener("click", function () {
+adminBtn.addEventListener(
+    "click",
+    function () {
 
-    // Admin login is already available
-    // on the login page.
-    window.location.href = "login.html";
+        window.location.href =
+            "login.html?admin=true";
 
-});
+    }
+);
+
 
 // ==========================
 // LOGOUT
 // ==========================
 
-logoutBtn.addEventListener("click", function () {
+logoutBtn.addEventListener(
+    "click",
+    function () {
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
 
-    // Nobody is logged in
-    if (!customer) {
 
-        window.location.href = "login.html";
+        if (!customer) {
 
-        return;
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        if (
+            confirm(
+                "Do you want to logout?"
+            )
+        ) {
+
+            localStorage.removeItem(
+                "customer"
+            );
+
+
+            window.location.href =
+                "index.html";
+
+        }
+
     }
-
-    if (confirm("Do you want to logout?")) {
-
-        localStorage.removeItem("customer");
-
-        window.location.href = "index.html";
-
-    }
-
-});
+);

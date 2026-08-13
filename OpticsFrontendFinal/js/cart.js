@@ -2,23 +2,42 @@
 // CART PAGE JAVASCRIPT
 // =========================================
 
+
 // ==========================
 // GLOBAL VARIABLES
 // ==========================
 
 let cartList = [];
 
-const cartItems = document.getElementById("cartItems");
 
-const totalAmount = document.getElementById("totalAmount");
+const cartItems =
+    document.getElementById("cartItems");
 
-const placeOrderBtn = document.getElementById("placeOrderBtn");
 
-const homeBtn = document.getElementById("homeBtn");
+const totalAmount =
+    document.getElementById("totalAmount");
 
-const ordersBtn = document.getElementById("ordersBtn");
 
-const logoutBtn = document.getElementById("logoutBtn");
+const placeOrderBtn =
+    document.getElementById("placeOrderBtn");
+
+
+const homeBtn =
+    document.getElementById("homeBtn");
+
+
+const ordersBtn =
+    document.getElementById("ordersBtn");
+
+
+const accountBtn =
+    document.getElementById("accountBtn");
+
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
 
 // ==========================
 // INITIALIZE
@@ -26,9 +45,41 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 window.onload = function(){
 
+    checkLogin();
+
     loadCart();
 
 };
+
+
+
+// ==========================
+// CHECK LOGIN
+// ==========================
+
+function checkLogin(){
+
+    const customer =
+        JSON.parse(
+            localStorage.getItem("customer")
+        );
+
+
+    if(!customer){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
 
 // ==========================
 // LOAD CART
@@ -36,41 +87,67 @@ window.onload = function(){
 
 async function loadCart(){
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    const customer =
+        JSON.parse(
+            localStorage.getItem("customer")
+        );
+
 
     if(!customer){
 
-        window.location.href = "login.html";
+        window.location.href =
+            "login.html";
 
         return;
 
     }
 
+
     try{
 
-        const response = await fetch(`${BASE_URL}/cart/getCartByCustomer/${customer.customerId}`);
+
+        const response =
+            await fetch(
+                `${BASE_URL}/cart/getCartByCustomer/${customer.customerId}`
+            );
+
 
         if(!response.ok){
 
-            throw new Error("Unable to load cart.");
+            throw new Error(
+                "Unable to load cart."
+            );
 
         }
 
-        cartList = await response.json();
+
+        cartList =
+            await response.json();
+
 
         displayCart();
 
+
     }
+
 
     catch(error){
 
+
         console.error(error);
 
-        showToast("Unable to load cart.", "error");
+
+        showToast(
+            "Unable to load cart.",
+            "error"
+        );
 
     }
 
 }
+
+
 
 // ==========================
 // DISPLAY CART
@@ -78,9 +155,11 @@ async function loadCart(){
 
 function displayCart(){
 
-    if(cartList.length==0){
 
-        cartItems.innerHTML=`
+    if(cartList.length === 0){
+
+
+        cartItems.innerHTML = `
 
             <h2 style="text-align:center;color:white;">
 
@@ -90,41 +169,68 @@ function displayCart(){
 
         `;
 
-        totalAmount.innerHTML=0;
+
+        totalAmount.innerHTML = 0;
+
 
         return;
 
     }
 
-    let html="";
 
-    let total=0;
+    let html = "";
 
-    cartList.forEach(cart=>{
+    let total = 0;
 
-        const product=cart.product;
 
-        const subtotal=product.price * cart.quantity;
+    cartList.forEach(cart => {
+
+
+        const product =
+            cart.product;
+
+
+        const subtotal =
+            product.price * cart.quantity;
+
 
         total += subtotal;
 
-        let image = product.imageUrl;
 
-        if(!image || image.trim()===""){
+        let image =
+            product.imageUrl;
 
-            image="images/no-image.png";
+
+        if(
+            !image ||
+            image.trim() === ""
+        ){
+
+            image =
+                "images/no-image.png";
 
         }
+
 
         html += `
 
         <div class="cart-card">
 
-            <img src="${image}">
+
+            <img
+                src="${image}"
+                alt="${product.productName}">
+
 
             <div class="cart-details">
 
-                <h2>${product.productName}</h2>
+
+                <h2>
+
+                    ${product.productName}
+
+                </h2>
+
 
                 <p>
 
@@ -132,19 +238,24 @@ function displayCart(){
 
                 </p>
 
+
                 <p class="price">
 
                     ₹${product.price}
 
                 </p>
 
+
                 <div class="quantity">
 
-                    <button onclick="decreaseQuantity(${cart.cartId})">
+
+                    <button
+                        onclick="decreaseQuantity(${cart.cartId})">
 
                         -
 
                     </button>
+
 
                     <span>
 
@@ -152,13 +263,17 @@ function displayCart(){
 
                     </span>
 
-                    <button onclick="increaseQuantity(${cart.cartId})">
+
+                    <button
+                        onclick="increaseQuantity(${cart.cartId})">
 
                         +
 
                     </button>
 
+
                 </div>
+
 
                 <p>
 
@@ -167,16 +282,18 @@ function displayCart(){
 
                 </p>
 
+
                 <button
                     class="remove-btn"
-
                     onclick="removeCart(${cart.cartId})">
 
                     Remove
 
                 </button>
 
+
             </div>
+
 
         </div>
 
@@ -184,11 +301,17 @@ function displayCart(){
 
     });
 
-    cartItems.innerHTML=html;
 
-    totalAmount.innerHTML=total;
+    cartItems.innerHTML =
+        html;
+
+
+    totalAmount.innerHTML =
+        total;
 
 }
+
+
 
 // ==========================
 // INCREASE QUANTITY
@@ -196,13 +319,28 @@ function displayCart(){
 
 function increaseQuantity(cartId){
 
-    const cart = cartList.find(c => c.cartId === cartId);
+
+    const cart =
+        cartList.find(
+            c => c.cartId === cartId
+        );
+
+
+    if(!cart){
+
+        return;
+
+    }
+
 
     cart.quantity++;
+
 
     updateCart(cart);
 
 }
+
+
 
 // ==========================
 // DECREASE QUANTITY
@@ -210,11 +348,24 @@ function increaseQuantity(cartId){
 
 function decreaseQuantity(cartId){
 
-    const cart = cartList.find(c => c.cartId === cartId);
+
+    const cart =
+        cartList.find(
+            c => c.cartId === cartId
+        );
+
+
+    if(!cart){
+
+        return;
+
+    }
+
 
     if(cart.quantity > 1){
 
         cart.quantity--;
+
 
         updateCart(cart);
 
@@ -222,49 +373,77 @@ function decreaseQuantity(cartId){
 
 }
 
+
+
 // ==========================
 // UPDATE CART
 // ==========================
 
 async function updateCart(cart){
 
+
     try{
 
-        const response = await fetch(`${BASE_URL}/cart/update`,{
 
-            method:"PUT",
+        const response =
+            await fetch(
+                `${BASE_URL}/cart/update`,
+                {
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+                    method:"PUT",
 
-            body:JSON.stringify(cart)
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
 
-        });
+                    body:
+                        JSON.stringify(cart)
+
+                }
+            );
+
 
         if(!response.ok){
 
-            const message = await response.text();
 
-            showToast(message, "error");
+            const message =
+                await response.text();
+
+
+            showToast(
+                message,
+                "error"
+            );
+
 
             return;
 
         }
 
+
         loadCart();
+
 
     }
 
+
     catch(error){
+
 
         console.error(error);
 
-        showToast("Unable to update cart.", "error");
+
+        showToast(
+            "Unable to update cart.",
+            "error"
+        );
 
     }
 
 }
+
+
 
 // ==========================
 // REMOVE CART
@@ -272,128 +451,295 @@ async function updateCart(cart){
 
 async function removeCart(cartId){
 
-    if(!confirm("Remove this product from cart?")){
+
+    if(
+        !confirm(
+            "Remove this product from cart?"
+        )
+    ){
 
         return;
 
     }
 
+
     try{
 
-        const response = await fetch(`${BASE_URL}/cart/delete/${cartId}`,{
 
-            method:"DELETE"
+        const response =
+            await fetch(
+                `${BASE_URL}/cart/delete/${cartId}`,
+                {
 
-        });
+                    method:"DELETE"
+
+                }
+            );
+
 
         if(!response.ok){
 
-            const message = await response.text();
 
-            showToast(message, "error");
+            const message =
+                await response.text();
+
+
+            showToast(
+                message,
+                "error"
+            );
+
 
             return;
 
         }
 
+
+        showToast(
+            "Product removed from cart.",
+            "success"
+        );
+
+
         loadCart();
+
 
     }
 
+
     catch(error){
+
 
         console.error(error);
 
-        showToast("Unable to remove product.", "error");
+
+        showToast(
+            "Unable to remove product.",
+            "error"
+        );
 
     }
 
 }
+
+
 
 // ==========================
 // PLACE ORDER
 // ==========================
 
-placeOrderBtn.addEventListener("click", placeOrder);
+placeOrderBtn.addEventListener(
+    "click",
+    placeOrder
+);
+
 
 async function placeOrder(){
 
-    if(cartList.length===0){
 
-        showToast("Cart is empty.", "warning");
+    if(cartList.length === 0){
+
+
+        showToast(
+            "Cart is empty.",
+            "warning"
+        );
+
 
         return;
 
     }
 
-    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    const customer =
+        JSON.parse(
+            localStorage.getItem("customer")
+        );
+
+
+    if(!customer){
+
+        window.location.href =
+            "login.html";
+
+        return;
+
+    }
+
 
     try{
 
-        const response = await fetch(`${BASE_URL}/orders/placeOrder/${customer.customerId}`,{
 
-            method:"POST"
+        const response =
+            await fetch(
+                `${BASE_URL}/orders/placeOrder/${customer.customerId}`,
+                {
 
-        });
+                    method:"POST"
+
+                }
+            );
+
 
         if(!response.ok){
 
-            const message = await response.text();
 
-            showToast(message, "error");
+            const message =
+                await response.text();
+
+
+            showToast(
+                message,
+                "error"
+            );
+
 
             return;
 
         }
 
-        showToast("Order Placed Successfully.", "success");
 
-        window.location.href="orders.html";
+        showToast(
+            "Order Placed Successfully.",
+            "success"
+        );
+
+
+        setTimeout(function(){
+
+            window.location.href =
+                "orders.html";
+
+        }, 700);
+
 
     }
 
+
     catch(error){
+
 
         console.error(error);
 
-        showToast("Unable to place order.", "error");
+
+        showToast(
+            "Unable to place order.",
+            "error"
+        );
 
     }
 
 }
 
+
+
 // ==========================
 // HOME
 // ==========================
 
-homeBtn.addEventListener("click",function(){
+homeBtn.addEventListener(
+    "click",
+    function(){
 
-    window.location.href="index.html";
+        window.location.href =
+            "index.html";
 
-});
+    }
+);
+
+
 
 // ==========================
 // ORDERS
 // ==========================
 
-ordersBtn.addEventListener("click",function(){
+ordersBtn.addEventListener(
+    "click",
+    function(){
 
-    window.location.href="orders.html";
 
-});
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
+
+
+        if(!customer){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "orders.html";
+
+    }
+);
+
+
+
+// ==========================
+// ACCOUNT
+// ==========================
+
+accountBtn.addEventListener(
+    "click",
+    function(){
+
+
+        const customer =
+            JSON.parse(
+                localStorage.getItem("customer")
+            );
+
+
+        if(!customer){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "account.html";
+
+    }
+);
+
+
 
 // ==========================
 // LOGOUT
 // ==========================
 
-logoutBtn.addEventListener("click",function(){
+logoutBtn.addEventListener(
+    "click",
+    function(){
 
-    if(confirm("Do you want to logout?")){
 
-        localStorage.removeItem("customer");
+        if(
+            confirm(
+                "Do you want to logout?"
+            )
+        ){
 
-        window.location.href="login.html";
+
+            localStorage.removeItem(
+                "customer"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
 
     }
-
-});
+);

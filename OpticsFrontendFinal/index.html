@@ -5,14 +5,17 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Optics Shop</title>
 
     <link rel="stylesheet" href="css/common.css">
+
     <link rel="stylesheet" href="css/home.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -26,11 +29,18 @@
 
 </head>
 
+
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
     <nav>
+
+
+        <!-- LOGO -->
 
         <div class="logo">
 
@@ -41,18 +51,39 @@
         </div>
 
 
+        <!-- SEARCH -->
+
         <div class="search-box">
 
-            <input type="text"
-                   id="search"
-                   placeholder="Search products...">
+            <input
+                    type="text"
+                    id="search"
+                    placeholder="Search products...">
 
             <i class="fa-solid fa-magnifying-glass"></i>
 
         </div>
 
 
+        <!-- NAVIGATION -->
+
         <div class="nav-right">
+
+
+            <!-- LOGIN
+                 Visible for guest -->
+
+            <button id="loginBtn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Login
+
+            </button>
+
+
+            <!-- CART
+                 Visible for logged-in customer -->
 
             <button id="cartBtn">
 
@@ -63,6 +94,9 @@
             </button>
 
 
+            <!-- ORDERS
+                 Visible for logged-in customer -->
+
             <button id="ordersBtn">
 
                 <i class="fa-solid fa-box"></i>
@@ -71,6 +105,9 @@
 
             </button>
 
+
+            <!-- ACCOUNT
+                 Visible for logged-in customer -->
 
             <button id="accountBtn">
 
@@ -81,7 +118,8 @@
             </button>
 
 
-            <!-- ADMIN BUTTON -->
+            <!-- ADMIN
+                 Visible for guest -->
 
             <button id="adminBtn">
 
@@ -92,36 +130,48 @@
             </button>
 
 
+            <!-- CUSTOMER INFORMATION
+                 Visible for logged-in customer -->
+
             <div class="user-info">
 
                 <i class="fa-solid fa-user"></i>
 
                 <span id="customerName">
 
-                    Welcome
-
                 </span>
 
             </div>
 
 
+            <!-- LOGOUT
+                 Visible for logged-in customer -->
+
             <button id="logoutBtn">
 
                 <i class="fa-solid fa-right-from-bracket"></i>
 
+                Logout
+
             </button>
+
 
         </div>
 
     </nav>
 
 
-    <!-- ================= MAIN ================= -->
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
 
     <div class="main-container">
 
 
-        <!-- ================= SIDEBAR ================= -->
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
 
         <aside>
 
@@ -141,9 +191,13 @@
         </aside>
 
 
-        <!-- ================= PRODUCTS ================= -->
+
+        <!-- =========================
+             PRODUCTS
+        ========================== -->
 
         <section>
+
 
             <div class="products-header">
 
@@ -154,7 +208,8 @@
                 </h2>
 
 
-                <select id="sortPrice"
+                <select
+                        id="sortPrice"
                         onchange="sortProducts(this.value)">
 
                     <option value="">
@@ -186,18 +241,24 @@
 
             </div>
 
+
         </section>
+
 
     </div>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="js/api.js"></script>
 
     <script src="js/utils.js"></script>
 
     <script src="js/home.js"></script>
+
 
 </body>
 

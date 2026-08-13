@@ -2,94 +2,146 @@
 // DASHBOARD
 // ==========================
 
-const dashboardBtn = document.getElementById("dashboardBtn");
+const dashboardBtn =
+    document.getElementById(
+        "dashboardBtn"
+    );
 
-if(dashboardBtn){
 
-    dashboardBtn.onclick=function(){
+if (dashboardBtn) {
 
-        window.location.href="dashboard.html";
+    dashboardBtn.onclick =
+        function () {
 
-    }
+            window.location.href =
+                "dashboard.html";
+
+        };
 
 }
+
 
 // ==========================
 // CATEGORY
 // ==========================
 
-const categoryBtn=document.getElementById("categoryBtn");
+const categoryBtn =
+    document.getElementById(
+        "categoryBtn"
+    );
 
-if(categoryBtn){
 
-    categoryBtn.onclick=function(){
+if (categoryBtn) {
 
-        window.location.href="category.html";
+    categoryBtn.onclick =
+        function () {
 
-    }
+            window.location.href =
+                "category.html";
+
+        };
 
 }
+
 
 // ==========================
 // PRODUCT
 // ==========================
 
-const productBtn=document.getElementById("productBtn");
+const productBtn =
+    document.getElementById(
+        "productBtn"
+    );
 
-if(productBtn){
 
-    productBtn.onclick=function(){
+if (productBtn) {
 
-        window.location.href="product.html";
+    productBtn.onclick =
+        function () {
 
-    }
+            window.location.href =
+                "product.html";
+
+        };
 
 }
+
 
 // ==========================
 // CUSTOMER
 // ==========================
 
-const customerBtn=document.getElementById("customerBtn");
+const customerBtn =
+    document.getElementById(
+        "customerBtn"
+    );
 
-if(customerBtn){
 
-    customerBtn.onclick=function(){
+if (customerBtn) {
 
-        window.location.href="customer.html";
+    customerBtn.onclick =
+        function () {
 
-    }
+            window.location.href =
+                "customer.html";
+
+        };
 
 }
+
 
 // ==========================
 // ORDERS
 // ==========================
 
-const ordersBtn=document.getElementById("ordersBtn");
+const ordersBtn =
+    document.getElementById(
+        "ordersBtn"
+    );
 
-if(ordersBtn){
 
-    ordersBtn.onclick=function(){
+if (ordersBtn) {
 
-        window.location.href="orders.html";
+    ordersBtn.onclick =
+        function () {
 
-    }
+            window.location.href =
+                "orders.html";
+
+        };
 
 }
+
 
 // ==========================
 // LOGOUT
 // ==========================
 
-const logoutBtn=document.getElementById("logoutBtn");
+const logoutBtn =
+    document.getElementById(
+        "logoutBtn"
+    );
 
-if(logoutBtn){
 
-    logoutBtn.onclick=function(){
+if (logoutBtn) {
 
-        window.location.href="../login.html";
+    logoutBtn.onclick =
+        function () {
 
-    }
+
+            if (
+                confirm(
+                    "Do you want to logout?"
+                )
+            ) {
+
+                // Go to guest home
+
+                window.location.href =
+                    "../index.html";
+
+            }
+
+        };
 
 }
